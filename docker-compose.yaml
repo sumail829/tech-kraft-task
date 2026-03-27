@@ -1,6 +1,18 @@
 services:
+  frontend:
+    build: ./frontend
+    image: sumail829/realestate-frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
   backend:
     build: ./backend
+    image: sumail829/realestate-backend
     restart: always
     ports:
       - "5000:5000"
