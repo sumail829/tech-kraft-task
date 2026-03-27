@@ -268,3 +268,27 @@ tech-kraft-task/
 | `baths` | integer | |
 | `internalStatusNotes` | varchar | admin-only field |
 | `agentId` | FK → agent | |
+
+# Test
+
+   ASS  src/tests/listings.test.ts
+  GET /listings
+    ✓ should return paginated results with meta (67 ms)
+    ✓ should filter by suburb (case-insensitive) (15 ms)
+    ✓ should filter by price range (15 ms)
+    ✓ should filter by property type (13 ms)
+    ✓ should respect pagination params (22 ms)
+  Role-based access: internalStatusNotes
+    ✓ should NOT expose internalStatusNotes to non-admin users (18 ms)
+    ✓ should expose internalStatusNotes to admin users (22 ms)
+  GET /listings/:id
+    ✓ should return a single property by id (7 ms)
+    ✓ should return 404 for a non-existent property (12 ms)
+    ✓ should return 400 for an invalid id (6 ms)
+    ✓ should hide internalStatusNotes for non-admin on detail page (8 ms)
+    ✓ should show internalStatusNotes for admin on detail page (8 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       12 passed, 12 total
+Snapshots:   0 total
+Time:        3.429 s
