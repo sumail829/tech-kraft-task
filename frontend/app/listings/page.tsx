@@ -1,6 +1,11 @@
 import ListingsView from "@/components/ListingsView";
-import { api } from "@/lib/api";
 
-export default function ListingsPage() {
-  return <ListingsView />;
+export default async function ListingsPage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string>>;
+}) {
+  const params = await searchParams;
+
+  return <ListingsView searchParams={params} />;
 }

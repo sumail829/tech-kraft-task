@@ -1,5 +1,3 @@
-
-
 async function getListing(id: string) {
   const res = await fetch(`http://localhost:5000/listings/${id}`, {
     cache: "no-store",
@@ -18,8 +16,9 @@ export default async function ListingDetail({
   return (
     <div>
       <h1>{listing.title}</h1>
-      <p>{listing.price}</p>
-      <p>{listing.suburb}</p>
+      <p>${listing.price}</p>
+      <p>{listing.beds} beds</p>
+      <p>{listing.baths} baths</p>
     </div>
   );
 }
