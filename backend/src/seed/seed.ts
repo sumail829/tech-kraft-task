@@ -14,8 +14,8 @@ const seed = async () => {
   const propertyRepo = AppDataSource.getRepository(Property);
 
  
-  await propertyRepo.delete({});
-  await agentRepo.delete({});
+  await propertyRepo.query(`TRUNCATE TABLE "property" RESTART IDENTITY CASCADE`);
+await agentRepo.query(`TRUNCATE TABLE "agent" RESTART IDENTITY CASCADE`);
   console.log("  Cleared existing data");
 
   const agents = agentRepo.create([
@@ -48,7 +48,6 @@ const seed = async () => {
   const savedAgents = await agentRepo.save(agents);
   console.log(`✅ Seeded ${savedAgents.length} agents`);
 
-  // Seed properties
   const properties = propertyRepo.create([
     {
       title: "Modern Family Home in Northside",
@@ -192,6 +191,6 @@ const seed = async () => {
 };
 
 seed().catch((err) => {
-  console.error("❌ Seeding failed:", err);
+  console.error("Seeding failed:", err);
   process.exit(1);
 });

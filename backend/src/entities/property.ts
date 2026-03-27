@@ -8,9 +8,6 @@ import {
 import { Agent } from "./agent";
 
 @Entity()
-@Index(["price"])
-@Index(["suburb"])
-@Index(["propertyType"])
 export class Property {
   @PrimaryGeneratedColumn()
   id!: number;
