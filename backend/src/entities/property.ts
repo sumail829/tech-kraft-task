@@ -3,35 +3,45 @@ import {
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
+  Index,
 } from "typeorm";
 import { Agent } from "./agent";
 
 @Entity()
+@Index(["price"])
+@Index(["suburb"])
+@Index(["propertyType"])
 export class Property {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  title: string;
-
-  @Column()
-  suburb: string;
-
-  @Column()
-  propertyType: string;
-
-  @Column()
-  price: number;
-
-  @Column()
-  beds: number;
-
-  @Column()
-  baths: number;
+  title!: string;
 
   @Column({ nullable: true })
-  internalStatusNotes: string;
+  description!: string;
 
-  @ManyToOne(() => Agent)
-  agent: Agent;
+  @Index()
+  @Column()
+  suburb!: string;
+
+  @Index()
+  @Column()
+  propertyType!: string;
+
+  @Index()
+  @Column()
+  price!: number;
+
+  @Column()
+  beds!: number;
+
+  @Column()
+  baths!: number;
+
+  @Column({ nullable: true })
+  internalStatusNotes?: string;
+
+  @ManyToOne(() => Agent, (agent) => agent.properties, { eager: true })
+  agent?: Agent;
 }

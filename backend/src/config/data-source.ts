@@ -20,7 +20,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER || "suman",
   password: process.env.DB_PASSWORD || "postgres",
   database: process.env.DB_NAME || "realestate",
-  synchronize: true,
+  synchronize: false,
   logging: true,
   entities: [Property, Agent],
 });

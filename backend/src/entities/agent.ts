@@ -4,20 +4,20 @@ import { Property } from "./property";
 @Entity()
 export class Agent {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column()
-  name: string;
+  name!: string;
 
   @Column({ unique: true })
-  email: string;
+  email!: string;
 
   @Column({ nullable: true })
-  phone: string;
+  phone!: string;
 
   @Column({ default: false })
-  is_admin: boolean;
+  is_admin!: boolean;
 
   @OneToMany(() => Property, (property) => property.agent)
-  properties: Property[];
+  properties!: Property[];
 }
