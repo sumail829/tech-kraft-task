@@ -4,11 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "migration:generate": "typeorm-ts-node-commonjs migration:generate -d src/config/data-source.ts",
     "migration:run": "typeorm-ts-node-commonjs migration:run -d src/config/data-source.ts",
     "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/config/data-source.ts",
-    "seed": "ts-node src/seed/seed.ts"
+    "seed": "ts-node src/seed/seed.ts",
+    "test": "jest --runInBand --forceExit"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": ["**/*.test.ts"],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    }
   },
   "keywords": [],
   "author": "",
