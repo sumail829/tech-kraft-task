@@ -91,6 +91,7 @@ DB_PORT=5432
 DB_USER=suman
 DB_PASSWORD=postgres
 DB_NAME=realestate
+NEXT_PUBLIC_API_URL=http://localhost:5000
 ```
 
 ### 2. Pull the images
