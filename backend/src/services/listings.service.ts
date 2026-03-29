@@ -25,7 +25,7 @@ export const listingsService = {
       .createQueryBuilder("property")
       .leftJoinAndSelect("property.agent", "agent");
 
-    // Filters
+    
     if (filters.suburb) {
       qb.andWhere("LOWER(property.suburb) = LOWER(:suburb)", {
         suburb: filters.suburb,
@@ -65,12 +65,12 @@ export const listingsService = {
       );
     }
 
-    // Pagination
+
     qb.skip(skip).take(limit).orderBy("property.price", "ASC");
 
     const [data, total] = await qb.getManyAndCount();
 
-    // Strip admin-only fields for non-admins
+  
     const listings = data.map((p) => formatProperty(p, isAdmin));
 
     return {
@@ -119,7 +119,7 @@ function formatProperty(property: Property, isAdmin: boolean) {
       : null,
   };
 
-  // Only admins see internal notes
+
   if (isAdmin) {
     result.internalStatusNotes = property.internalStatusNotes;
   }

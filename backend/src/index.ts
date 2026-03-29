@@ -22,7 +22,7 @@ const connectWithRetry = async (retries = 10, delay = 3000) => {
     } catch (err: any) {
       console.log(`⏳ DB not ready, attempt ${i}/${retries}... retrying in ${delay / 1000}s`);
       if (i === retries) {
-        console.error("❌ Could not connect to DB after max retries:", err.message);
+        console.error(" Could not connect to DB after max retries:", err.message);
         process.exit(1);
       }
       await new Promise((res) => setTimeout(res, delay));
@@ -38,6 +38,6 @@ connectWithRetry().then(() => {
   app.use("/listings", listingsRouter);
 
   app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(` Server running on port ${PORT}`);
   });
 });
