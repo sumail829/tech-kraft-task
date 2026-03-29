@@ -91,6 +91,7 @@ DB_PORT=5432
 DB_USER=suman
 DB_PASSWORD=postgres
 DB_NAME=realestate
+NEXT_PUBLIC_API_URL=http://localhost:5000
 ```
 
 ### 2. Pull the images
@@ -112,7 +113,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:5000
+      - NEXT_PUBLIC_API_URL=http://backend:5000
     depends_on:
       - backend
 
