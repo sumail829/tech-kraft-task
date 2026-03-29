@@ -1,5 +1,5 @@
 async function getListing(id: string) {
-  const res = await fetch(`http://localhost:5000/listings/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/listings/${id}`, {
     cache: "no-store",
   });
 

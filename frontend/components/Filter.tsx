@@ -21,7 +21,7 @@ export default function Filters() {
       if (beds) query.set("beds", beds);
       else query.delete("beds");
 
-      query.delete("page"); // reset to first page on filter change
+      query.delete("page"); 
       router.push(`/listings?${query.toString()}`);
     });
   };
